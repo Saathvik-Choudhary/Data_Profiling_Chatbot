@@ -92,25 +92,25 @@ This guide provides Windows-specific instructions for setting up the SQL Chatbot
 ## Step 6: Test SQL Server Connection
 
 ```cmd
-python test_sql_server_connection.py
+python scripts/test_sql_server_connection.py
 ```
 
 ## Step 7: Set Up Database Schema (SQL Server)
 
 ```cmd
-python setup_sql_server.py
+python scripts/setup_sql_server.py
 ```
 
 ## Step 8: Run the Application
 
-**Option 1: Using main.py**
+**Option 1: Using run.py (Recommended)**
 ```cmd
-python main.py
+python run.py
 ```
 
 **Option 2: Using uvicorn directly**
 ```cmd
-python -m uvicorn main:app --reload
+python -m uvicorn app.main:app --reload
 ```
 
 The application will be available at: http://localhost:8000
@@ -148,12 +148,12 @@ curl -X POST "http://localhost:8000/chat" -H "Content-Type: application/json" -d
 
 **Batch script:**
 ```cmd
-check_and_test.bat
+scripts\check_and_test.bat
 ```
 
 **PowerShell script:**
 ```powershell
-.\check_and_test.ps1
+.\scripts\check_and_test.ps1
 ```
 
 ## Common Windows-Specific Issues

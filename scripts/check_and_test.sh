@@ -1,4 +1,9 @@
 #!/bin/bash
+# Navigate to project root
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
+cd "$PROJECT_ROOT"
+
 echo "Checking model status and testing project..."
 
 # Check if model is downloaded
@@ -24,5 +29,5 @@ if ollama list | grep -q llama3.1; then
 else
     echo "⏳ Model still downloading..."
     echo "Run this script again when download completes:"
-    echo "  bash check_and_test.sh"
+    echo "  bash scripts/check_and_test.sh"
 fi

@@ -58,7 +58,7 @@ if __name__ == "__main__":
         print()
     except Exception as e:
         print(f"Warning: Could not connect to API: {e}")
-        print("Make sure the server is running: python main.py")
+        print("Make sure the server is running: python -m app.main")
         exit(1)
     
     # Test each example question

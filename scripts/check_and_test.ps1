@@ -1,4 +1,9 @@
 # PowerShell script to check model status and test project
+# Navigate to project root
+$ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
+$ProjectRoot = Split-Path -Parent $ScriptDir
+Set-Location $ProjectRoot
+
 Write-Host "Checking model status and testing project..." -ForegroundColor Cyan
 
 # Check if model is downloaded
@@ -29,7 +34,7 @@ if ($ollamaList -match "llama3.1") {
 } else {
     Write-Host "⏳ Model still downloading..." -ForegroundColor Yellow
     Write-Host "Run this script again when download completes:" -ForegroundColor Yellow
-    Write-Host "  .\check_and_test.ps1" -ForegroundColor Yellow
+    Write-Host "  .\scripts\check_and_test.ps1" -ForegroundColor Yellow
 }
 
 Read-Host "Press Enter to exit"

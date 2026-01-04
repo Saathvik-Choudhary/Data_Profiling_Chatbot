@@ -3,7 +3,9 @@ import sqlite3
 import os
 from datetime import datetime, timedelta
 
-DB_PATH = "profiling_sample.db"
+# Store database in project root
+project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DB_PATH = os.path.join(project_root, "profiling_sample.db")
 
 
 def create_database():

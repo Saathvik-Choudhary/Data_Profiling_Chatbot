@@ -8,13 +8,13 @@ import logging
 from typing import Optional
 import os
 
-from llm_client import OllamaClient
-from sql_validator import SQLValidator
-from database import get_db
-from explainer import DataQualityExplainer
-from query_router import QueryRouter
-from general_nlp import GeneralNLPHandler
-from config import settings
+from app.llm_client import OllamaClient
+from app.sql_validator import SQLValidator
+from app.database import get_db
+from app.explainer import DataQualityExplainer
+from app.query_router import QueryRouter
+from app.general_nlp import GeneralNLPHandler
+from app.config import settings
 
 # Configure logging
 logging.basicConfig(
@@ -46,7 +46,9 @@ query_router = QueryRouter()
 general_nlp = GeneralNLPHandler()
 
 # Serve static files (web UI)
-static_dir = os.path.join(os.path.dirname(__file__), "static")
+# Get project root directory (parent of app directory)
+project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+static_dir = os.path.join(project_root, "static")
 if os.path.exists(static_dir):
     app.mount("/static", StaticFiles(directory=static_dir), name="static")
 

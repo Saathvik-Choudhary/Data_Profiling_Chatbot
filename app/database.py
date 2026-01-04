@@ -6,7 +6,7 @@ import sys
 import platform
 from typing import Optional, List, Dict, Any
 from contextlib import contextmanager
-from config import settings
+from app.config import settings
 
 logger = logging.getLogger(__name__)
 
@@ -32,11 +32,13 @@ class DatabaseConnection:
         self.use_sqlite = self._should_use_sqlite()
         
         if self.use_sqlite:
-            self.db_path = "profiling_sample.db"
+            # Store database in project root
+            project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            self.db_path = os.path.join(project_root, "profiling_sample.db")
             if not os.path.exists(self.db_path):
                 python_cmd = "python" if IS_WINDOWS else "python3"
                 logger.warning(f"SQLite database not found: {self.db_path}")
-                logger.warning(f"Run: {python_cmd} init_sample_database.py to create it")
+                logger.warning(f"Run: {python_cmd} scripts/init_sample_database.py to create it")
         else:
             if not PYODBC_AVAILABLE:
                 error_msg = "pyodbc is not available.\n"

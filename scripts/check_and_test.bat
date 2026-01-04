@@ -1,4 +1,7 @@
 @echo off
+REM Navigate to project root
+cd /d "%~dp0\.."
+
 echo Checking model status and testing project...
 
 REM Check if model is downloaded (requires ollama to be in PATH)
@@ -25,7 +28,7 @@ if %errorlevel% equ 0 (
 ) else (
     echo ⏳ Model still downloading...
     echo Run this script again when download completes:
-    echo   check_and_test.bat
+    echo   scripts\check_and_test.bat
 )
 
 pause

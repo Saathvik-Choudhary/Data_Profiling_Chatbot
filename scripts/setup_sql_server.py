@@ -4,7 +4,10 @@ This script creates the necessary tables and views in SQL Server.
 """
 import pyodbc
 import sys
-from config import settings
+import os
+# Add parent directory to path to import app modules
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from app.config import settings
 
 def get_connection():
     """Get SQL Server connection."""

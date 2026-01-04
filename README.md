@@ -146,24 +146,24 @@ LOG_LEVEL=INFO
    
    **Windows:**
    ```cmd
-   python test_sql_server_connection.py
+   python scripts/test_sql_server_connection.py
    ```
    
    **macOS/Linux:**
    ```bash
-   python3 test_sql_server_connection.py
+   python3 scripts/test_sql_server_connection.py
    ```
 
 4. **Set up database tables and views**:
    
    **Windows:**
    ```cmd
-   python setup_sql_server.py
+   python scripts/setup_sql_server.py
    ```
    
    **macOS/Linux:**
    ```bash
-   python3 setup_sql_server.py
+   python3 scripts/setup_sql_server.py
    ```
    This script will:
    - Create `profiling_tables` and `profiling_columns` tables
@@ -198,8 +198,8 @@ For local testing, you can use SQLite:
 
 1. Set `DB_DATABASE=profiling_sample.db` in `.env`
 2. Run:
-   - **Windows**: `python init_sample_database.py`
-   - **macOS/Linux**: `python3 init_sample_database.py`
+   - **Windows**: `python scripts/init_sample_database.py`
+   - **macOS/Linux**: `python3 scripts/init_sample_database.py`
 
 The system automatically detects SQLite when the database name ends with `.db`.
 
@@ -209,24 +209,24 @@ Start the FastAPI server:
 
 **Windows:**
 ```cmd
-python main.py
+python run.py
 ```
 
 **macOS/Linux:**
 ```bash
-python3 main.py
+python3 run.py
 ```
 
 Or using uvicorn directly:
 
 **Windows:**
 ```cmd
-python -m uvicorn main:app --reload --host 0.0.0.0 --port 8000
+python -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
 **macOS/Linux:**
 ```bash
-python3 -m uvicorn main:app --reload --host 0.0.0.0 --port 8000
+python3 -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
 The API will be available at `http://localhost:8000`
@@ -293,29 +293,45 @@ Example response:
 
 ```
 Sql Chatbot/
-├── main.py              # FastAPI application
-├── config.py            # Configuration management
-├── database.py          # Database connection and queries
-├── llm_client.py        # Ollama client for Llama 3.1
-├── query_router.py      # Intelligent query routing (SQL vs General NLP)
-├── general_nlp.py        # General NLP handler for non-SQL queries
-├── sql_validator.py     # SQL safety validation
-├── explainer.py         # Rule-based explanations
+├── app/                  # Main application package
+│   ├── main.py          # FastAPI application
+│   ├── config.py        # Configuration management
+│   ├── database.py      # Database connection and queries
+│   ├── llm_client.py    # Ollama client for Llama 3.1
+│   ├── query_router.py  # Intelligent query routing (SQL vs General NLP)
+│   ├── general_nlp.py   # General NLP handler for non-SQL queries
+│   ├── sql_validator.py # SQL safety validation
+│   └── explainer.py     # Rule-based explanations
+├── scripts/             # Utility scripts
+│   ├── init_sample_database.py
+│   ├── setup_sql_server.py
+│   ├── test_sql_server_connection.py
+│   └── example_queries.py
+├── docs/                 # Documentation
+│   ├── SETUP_GUIDE.md   # Complete setup guide (Windows & macOS)
+│   ├── SQL_SERVER_SETUP.md
+│   ├── WINDOWS_SETUP.md
+│   └── SETUP_CHECK.md
+├── static/              # Web UI files
+│   └── index.html
+├── sql/                 # SQL scripts
+│   └── setup_database.sql
+├── tests/               # Test files
+├── run.py               # Application entry point
 ├── requirements.txt     # Python dependencies
 ├── .env.example         # Environment template
-├── SETUP_GUIDE.md       # Complete setup guide (Windows & macOS)
-├── SQL_SERVER_SETUP.md  # SQL Server specific setup
-├── WINDOWS_SETUP.md     # Windows-specific guide
-├── SETUP_CHECK.md       # Setup verification and troubleshooting
 └── README.md           # This file
 ```
 
+For detailed structure information, see [PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md).
+
 ## Documentation
 
-- **[SETUP_GUIDE.md](SETUP_GUIDE.md)** - Complete step-by-step setup for Windows and macOS
-- **[SQL_SERVER_SETUP.md](SQL_SERVER_SETUP.md)** - Detailed SQL Server configuration
-- **[WINDOWS_SETUP.md](WINDOWS_SETUP.md)** - Windows-specific setup guide
-- **[SETUP_CHECK.md](SETUP_CHECK.md)** - Setup verification and troubleshooting
+- **[PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md)** - Project organization and structure
+- **[docs/SETUP_GUIDE.md](docs/SETUP_GUIDE.md)** - Complete step-by-step setup for Windows and macOS
+- **[docs/SQL_SERVER_SETUP.md](docs/SQL_SERVER_SETUP.md)** - Detailed SQL Server configuration
+- **[docs/WINDOWS_SETUP.md](docs/WINDOWS_SETUP.md)** - Windows-specific setup guide
+- **[docs/SETUP_CHECK.md](docs/SETUP_CHECK.md)** - Setup verification and troubleshooting
 
 ## Troubleshooting
 

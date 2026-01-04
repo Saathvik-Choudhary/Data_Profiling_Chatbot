@@ -3,7 +3,10 @@ Test script to verify SQL Server connection.
 """
 import sys
 import platform
-from config import settings
+import os
+# Add parent directory to path to import app modules
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from app.config import settings
 
 IS_WINDOWS = platform.system() == "Windows"
 IS_MACOS = platform.system() == "Darwin"

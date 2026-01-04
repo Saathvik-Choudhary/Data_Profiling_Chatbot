@@ -406,34 +406,34 @@ brew install unixodbc
 
 **For SQL Server:**
 ```cmd
-python test_sql_server_connection.py
+python scripts/test_sql_server_connection.py
 ```
 
 **For SQLite (local development):**
 1. First, create the sample database:
    ```cmd
-   python init_sample_database.py
+   python scripts/init_sample_database.py
    ```
 2. Then test:
    ```cmd
-   python -c "from database import get_db; db = get_db(); print('Database connection successful!')"
+   python -c "from app.database import get_db; db = get_db(); print('Database connection successful!')"
    ```
 
 ### macOS
 
 **For SQL Server:**
 ```bash
-python3 test_sql_server_connection.py
+python3 scripts/test_sql_server_connection.py
 ```
 
 **For SQLite (local development):**
 1. First, create the sample database:
    ```bash
-   python3 init_sample_database.py
+   python3 scripts/init_sample_database.py
    ```
 2. Then test:
    ```bash
-   python3 -c "from database import get_db; db = get_db(); print('Database connection successful!')"
+   python3 -c "from app.database import get_db; db = get_db(); print('Database connection successful!')"
    ```
 
 **Expected Output:**
@@ -450,7 +450,7 @@ python3 test_sql_server_connection.py
 ### Windows
 
 ```cmd
-python setup_sql_server.py
+python scripts/setup_sql_server.py
 ```
 
 Follow the prompts:
@@ -461,7 +461,7 @@ Follow the prompts:
 ### macOS
 
 ```bash
-python3 setup_sql_server.py
+python3 scripts/setup_sql_server.py
 ```
 
 Follow the prompts:
@@ -480,36 +480,36 @@ Follow the prompts:
 
 ### Windows
 
-**Option 1: Using main.py**
+**Option 1: Using run.py (Recommended)**
 ```cmd
-python main.py
+python run.py
 ```
 
 **Option 2: Using uvicorn directly**
 ```cmd
-python -m uvicorn main:app --reload
+python -m uvicorn app.main:app --reload
 ```
 
 **Option 3: Run in background (PowerShell)**
 ```powershell
-Start-Process python -ArgumentList "main.py"
+Start-Process python -ArgumentList "run.py"
 ```
 
 ### macOS
 
-**Option 1: Using main.py**
+**Option 1: Using run.py (Recommended)**
 ```bash
-python3 main.py
+python3 run.py
 ```
 
 **Option 2: Using uvicorn directly**
 ```bash
-python3 -m uvicorn main:app --reload
+python3 -m uvicorn app.main:app --reload
 ```
 
 **Option 3: Run in background**
 ```bash
-python3 main.py &
+python3 run.py &
 ```
 
 **Expected Output:**
@@ -551,11 +551,11 @@ Invoke-RestMethod -Uri "http://localhost:8000/chat" `
 
 **4. Use Test Script:**
 ```cmd
-check_and_test.bat
+scripts\check_and_test.bat
 ```
 Or PowerShell:
 ```powershell
-.\check_and_test.ps1
+.\scripts\check_and_test.ps1
 ```
 
 ### macOS
@@ -574,7 +574,7 @@ curl -X POST "http://localhost:8000/chat" \
 
 **3. Use Test Script:**
 ```bash
-bash check_and_test.sh
+bash scripts/check_and_test.sh
 ```
 
 **Expected Response:**
@@ -696,9 +696,9 @@ python3 -m uvicorn main:app --port 8001
 | Task | Command |
 |------|---------|
 | Activate venv | `venv\Scripts\activate` |
-| Run app | `python main.py` |
-| Test connection | `python test_sql_server_connection.py` |
-| Setup database | `python setup_sql_server.py` |
+| Run app | `python run.py` |
+| Test connection | `python scripts/test_sql_server_connection.py` |
+| Setup database | `python scripts/setup_sql_server.py` |
 | Check health | `curl http://localhost:8000/health` |
 
 ### macOS Commands
@@ -706,9 +706,9 @@ python3 -m uvicorn main:app --port 8001
 | Task | Command |
 |------|---------|
 | Activate venv | `source venv/bin/activate` |
-| Run app | `python3 main.py` |
-| Test connection | `python3 test_sql_server_connection.py` |
-| Setup database | `python3 setup_sql_server.py` |
+| Run app | `python3 run.py` |
+| Test connection | `python3 scripts/test_sql_server_connection.py` |
+| Setup database | `python3 scripts/setup_sql_server.py` |
 | Check health | `curl http://localhost:8000/health` |
 
 ---

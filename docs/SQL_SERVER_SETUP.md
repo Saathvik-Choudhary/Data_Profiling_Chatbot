@@ -61,12 +61,12 @@ Run the test script to verify your connection:
 
 **Windows:**
 ```cmd
-python test_sql_server_connection.py
+python scripts/test_sql_server_connection.py
 ```
 
 **macOS/Linux:**
 ```bash
-python3 test_sql_server_connection.py
+python3 scripts/test_sql_server_connection.py
 ```
 
 This will:
@@ -80,12 +80,12 @@ Run the setup script to create tables and views:
 
 **Windows:**
 ```cmd
-python setup_sql_server.py
+python scripts/setup_sql_server.py
 ```
 
 **macOS/Linux:**
 ```bash
-python3 setup_sql_server.py
+python3 scripts/setup_sql_server.py
 ```
 
 This script will:
@@ -124,12 +124,20 @@ VALUES (1, 'customer_id', 'INT', 0, 15000, NULL, '1', '15000', 0);
    
    **Windows:**
    ```cmd
-   python -m uvicorn main:app --reload
+   python run.py
+   ```
+   Or:
+   ```cmd
+   python -m uvicorn app.main:app --reload
    ```
    
    **macOS/Linux:**
    ```bash
-   python3 -m uvicorn main:app --reload
+   python3 run.py
+   ```
+   Or:
+   ```bash
+   python3 -m uvicorn app.main:app --reload
    ```
 
 3. Check health endpoint:
@@ -203,8 +211,11 @@ VALUES (1, 'customer_id', 'INT', 0, 15000, NULL, '1', '15000', 0);
 
 Once your SQL Server connection is working:
 1. Start the chatbot:
-   - **Windows**: `python -m uvicorn main:app --reload`
-   - **macOS/Linux**: `python3 -m uvicorn main:app --reload`
+   - **Windows**: `python run.py`
+   - **macOS/Linux**: `python3 run.py`
+   Or using uvicorn:
+   - **Windows**: `python -m uvicorn app.main:app --reload`
+   - **macOS/Linux**: `python3 -m uvicorn app.main:app --reload`
 2. Access the web UI: http://localhost:8000/ui
 3. Test with questions like:
    - "Which columns have high null values?"

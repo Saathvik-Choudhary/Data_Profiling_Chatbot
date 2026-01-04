@@ -100,24 +100,24 @@ You should see at least one SQL Server driver listed.
 
 **Windows:**
 ```cmd
-python test_sql_server_connection.py
+python scripts/test_sql_server_connection.py
 ```
 
 **macOS/Linux:**
 ```bash
-python3 test_sql_server_connection.py
+python3 scripts/test_sql_server_connection.py
 ```
 
 ### Step 6: Set Up Database Schema
 
 **Windows:**
 ```cmd
-python setup_sql_server.py
+python scripts/setup_sql_server.py
 ```
 
 **macOS/Linux:**
 ```bash
-python3 setup_sql_server.py
+python3 scripts/setup_sql_server.py
 ```
 
 ## Database Type Detection
